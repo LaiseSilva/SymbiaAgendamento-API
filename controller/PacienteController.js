@@ -18,25 +18,25 @@ router.get('/listarPacientes', (req, res)=>{
 })
 
 router.post('/cadastrarPaciente', (req,res)=>{
-    res.send('to aqui')
-    //console.log(req.body)
 
+    //res.send('Cadastro de livros');
+
+    let{nome_paciente, telefone_paciente,
+        celular_paciente, email_paciente,
+        nome_responsavel, telefone_responsavel} = req.body;
     
+        console.log(req.body);
 
-    // let{nome_paciente, telefone_paciente,
-    //     celular_paciente, email_paciente,
-    //     nome_responsavel, telefone_responsavel} = req.body;
-
-    // pacienteModel.create({nome_paciente,telefone_paciente,celular_paciente,email_paciente,nome_responsavel,telefone_responsavel}
-    //     .then(
-    //         ()=>{
-    //           res.status(200).send("Paciente inserido com sucesso!");
-    //         }
-    //     ).catch(
-    //         (error)=>{
-    //             res.status(500).json({"MSG": error})
-    //         }
-    //     ))
+    pacienteModel.create({nome_paciente,telefone_paciente,celular_paciente,email_paciente,nome_responsavel,telefone_responsavel})
+        .then(
+            ()=>{
+              res.status(200).send("Paciente inserido com sucesso!");
+            }
+        ).catch(
+            (error)=>{
+                res.status(500).json({"MSG": error})
+            }
+        )
 })
 
 module.exports= router
